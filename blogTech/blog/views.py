@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from .models import Blog
@@ -17,3 +17,6 @@ def detalhe(request, blog_id):
     except Blog.DoesNotExist:
         return render(request,'blog/not_found.html', {'blog_id': blog_id})
     return render(request, 'blog/detalhe.html', {'blog': blog})
+
+def index_redirect(request):
+    return redirect('/blog')
